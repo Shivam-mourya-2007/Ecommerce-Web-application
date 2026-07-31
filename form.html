@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<style>
+    .form{
+    background-color: #F7F1E8;
+    border-radius: 20px;
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    }
+
+    input {
+    margin-top: 20px;
+    height: 40px;
+    width: 300px;
+    border-radius: 10px;
+}
+
+.button button{
+    height: 50px;
+    width: 150px;
+    border-radius: 50%;
+    background-color: blanchedalmond;
+}
+
+.navbar{
+    display: flex;
+    background-color: bisque;
+    height: 50px;
+    width: 100%;
+    justify-content: space-around;
+}
+
+
+.options{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.options li{
+    list-style: none;
+    padding: 0px 100px;
+    
+}
+
+.options li a{
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: 0.5s ease;
+    font-size: 2rem;
+    font-weight: 600;
+
+}
+
+.options li a:hover{
+    color: red;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+ 
+}
+
+#container img {
+  height: 200px;
+  width: 150px;
+}
+
+
+#container div {
+    background-color: gainsboro;
+    border-radius: 20px;
+    border: 2px solid black;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+div{
+    background-color: rgb(222, 197, 164);
+    border-radius: 20px;
+}
+
+  button{
+        background-color: skyblue;
+        font-size: 25px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        height:40px;
+        width: 200px;
+        border-radius: 25px;
+        padding: 0px 15px;
+
+        cursor: pointer;
+       }
+ 
+</style>
+<body>
+    <div class="navbar">
+        <ul class="options">
+           <li> <a href="index.html">Home </a></li>
+            <li><a href="Addtocard.html">Card</a></li>
+        </ul>
+        
+    </div>
+    <div class="form">
+       <input type="text" id="imageurl" placeholder="Image URL" required><br><br>
+    <input type="text" id="productname" placeholder="Product Name" required><br><br>
+    <input type="text" id="brandname" placeholder="Brand Name" required><br><br>
+    <input type="text" id="description" placeholder="Description" required><br><br>
+    <input type="text" id="price" placeholder="Product Price" required><br><br>
+    
+    <div class="button">
+
+        <button onclick="addProduct()">Submit</button><br>
+      
+    </div>
+  </div>
+
+  <div id="container"></div>
+</body>
+
+<script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    function addProduct() {
+    let imageUrl = document.getElementById("imageurl").value;
+    let productName = document.getElementById("productname").value;
+    let brandName = document.getElementById("brandname").value;
+    let description = document.getElementById("description").value;
+    let price = document.getElementById("price").value;
+
+let product = {
+    image: imageUrl,
+    ProductName: productName,
+    brandName: brandName,
+    description: description,
+    price: price,
+  };
+  
+  products.push(product);
+  localStorage.setItem("products", JSON.stringify(products));
+  createProduct(product);
+}
+function createProduct(items) {
+  let card = document.createElement("div");
+
+  let Image = document.createElement("img");
+  Image.src = items.image;
+
+  let ProductName = document.createElement("h2");
+  ProductName.innerText = items.ProductName;
+
+  let brandName=document.createElement("h2");
+  brandName.innerText=items.brandName;
+
+  let description = document.createElement("p");
+  description.textContent = items.description;
+
+  let price = document.createElement("p");
+  price.innerText = `₹${items.price}`;
+
+  let viewMore = document.createElement("button");
+  viewMore.innerText = "VIEW MORE";
+
+  let AddCart = document.createElement("button");
+  AddCart.innerText = "Add to Cart";
+
+  viewMore.addEventListener("click", () => {
+    localStorage.setItem("selectedProduct", JSON.stringify(items));
+    window.location.href = "viewMore.html";
+  });
+
+  AddCart.addEventListener("click", () => {
+    cart.push(items);
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+  });
+
+  card.append(Image, ProductName,brandName, description, price, viewMore, AddCart);
+  document.getElementById("container").appendChild(card);
+}
+window.onload = function() {
+  for (let i = 0; i < products.length; i++) {
+    createProduct(products[i]);
+  }
+};
+</script>
+</html>

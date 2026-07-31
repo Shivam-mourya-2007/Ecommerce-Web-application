@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+  <style>
+
+.navbar{
+    display: flex;
+    background-color: bisque;
+    height: 50px;
+    width: 100%;
+    justify-content: space-around;
+}
+.options{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.options li{
+    list-style: none;
+    padding: 0px 100px;
+    
+}
+
+.options li a{
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: 0.5s ease;
+    font-size: 2rem;
+    font-weight: 600;
+
+}
+
+.options li a:hover{
+    color: red;
+}
+
+#container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+  #container div{
+    width: 400px;
+    border: 2px solid black;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    align-items: center; 
+    }
+img { 
+    height: 150px; 
+    width: 120px; 
+}
+
+button{
+      height: 40px;
+      width: 90px;
+      color: aliceblue;
+      font-size: 20px;
+      background-color: rgb(107, 152, 152);
+}
+
+
+  </style>
+</head>
+<body>
+    <div class="navbar">
+        <ul class="options">
+           <li> <a href="index.html">Home </a></li>
+            <li><a href="Addtocard.html">Card</a></li>
+            <li><a href="form.html">Back to form</a></li>
+        </ul>
+        
+    </div>
+   <h1 id="total">Total: ₹0</h1>
+  <div id="container"></div>
+</body>
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function createproduct(items, index) {
+    let card = document.createElement("div");
+
+    let Image = document.createElement("img");
+    Image.src = items.image;
+
+    let ProductName = document.createElement("h2");
+    ProductName.innerText = items.ProductName;
+
+    let description = document.createElement("p");
+    description.innerText = items.description;
+
+    let price = document.createElement("p");
+    price.innerText = "₹" + items.price;
+
+    let removeBtn = document.createElement("button");
+    removeBtn.innerText = "Remove";
+
+removeBtn.addEventListener("click", function () {
+
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart();
+
+});
+    card.append(Image, ProductName, description, price, removeBtn);
+
+    document.getElementById("container").append(card);
+
+}
+
+function renderCart() {
+    document.getElementById("container").innerHTML = "";
+    let total = 0;
+    
+    
+    for (let i = 0; i < cart.length; i++) {
+        total = total + (Number(cart[i].price));
+        createproduct(cart[i], i);
+  }
+  document.getElementById("total").innerText ="Total : ₹ " + total;
+}
+
+renderCart();
+</script>
