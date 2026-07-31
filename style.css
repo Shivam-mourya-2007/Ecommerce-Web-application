@@ -28,7 +28,7 @@ html, body {
     position: sticky;
     z-index: 999;
     top: 0;
-    left: 0;
+    /* left: 0; */
 }
 
 .options{
@@ -225,14 +225,66 @@ html, body {
     width: 23%;
     min-width: 250px;
     padding: 10px 14px;
-    border: 1px solid #ffffff;
-    border-radius: 20px;
+    border: 1px solid #cce7d0;
+    border-radius: 25px;
+    cursor:pointer;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+    margin: 15px 0;
+    position: relative;
+}
+
+.Clothing .cloth-card:hover{
+        box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.08);
 
 }
 
 .Clothing .cloth-card img{
     width: 100%;
     border-radius: 20px;
+}
+
+.Clothing .cloth-card .des{
+    text-align: start;
+    padding: 10px 0; 
+} 
+
+.Clothing .cloth-card .des span{
+    color: #606063;
+    font-size: 15px;
+}
+
+.Clothing .cloth-card .des h5{
+    padding-top: 10px;
+    color: #1a1a1a;
+    font-size: 1rem;
+}
+.Clothing .cloth-card .des .star{
+    padding-top: 1rem;
+}
+
+.Clothing .cloth-card .des button{
+    background-color: skyblue;
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    height:40px;
+    width: 150px;
+    border-radius: 25px;
+    padding: 0px 15px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 2px;
+    right: 4%;
+    
+}
+
+.Clothing .cloth-card .des button:hover{
+    background-color: rgb(230, 133, 98);
+}
+
+.Clothing .cloth-card .des .star i{
+    font-size: 18px;
+    color: rgb(243, 181, 25);
 }
 .Clothing h2{
     font-size: 45px;
@@ -251,5 +303,14 @@ html, body {
 .des h4{
     font-size: 20px;
     color: #222;
-    padding-bottom: 15px;
+    padding-top: 10px;
+}
+
+.Clothing .cloth-container{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+
+    /* for breaking the product in equal using wrap */
+    flex-wrap: wrap;
 }
