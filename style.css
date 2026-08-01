@@ -116,7 +116,7 @@ html, body {
     font-size: 45px;
     line-height: 54px;
     color: #222;
-    scroll-padding-top: 15px;
+    padding-top: 15px;
 
 }
 
@@ -131,6 +131,8 @@ html, body {
     font-weight: 700;
     font-size: 12px;
 }
+
+/* Product section....................................... */
 
 .feature{
     /* margin: 60px auto; */
@@ -213,7 +215,7 @@ html, body {
     background-color: #e3b298;
 }
 
-/* Clothing product  */
+/* Adding Cloth in box formate.......................  */
 .Clothing{
     display: flex;
     flex-direction: column;
@@ -313,4 +315,56 @@ html, body {
 
     /* for breaking the product in equal using wrap */
     flex-wrap: wrap;
+}
+
+.space{
+    margin: 40px 0;
+}
+
+.banner h2{
+    font-size: 3.5rem;
+    line-height: 54px;
+    color: #fff;
+    padding: 15px 25px;
+
+}
+.banner h2 span{
+    color: #ef3636;
+}
+
+.banner h4{
+    font-size: 1.7rem;
+    color: #fff;
+    padding-bottom: 15xp;
+}
+
+.banner{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-image: url("assests/banner/b1.jpg");
+    width: 100%;
+    height: 40vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.banner button.explore{
+    font-size: 15px;
+    font-weight: 600;
+    padding: 15px 30px;
+    color: #000;
+    background-color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0.3s;
+}
+
+.banner button.explore:hover{
+    background-color: #465b52;
+    color: #fff;
 }
