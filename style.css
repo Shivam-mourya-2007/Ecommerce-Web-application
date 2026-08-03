@@ -87,23 +87,22 @@ li.menu-item {
     cursor: pointer;
 }
 
-/* Header ko reference point banao */
+
 #header {
     position: relative;
 }
 
-/* li ka position hatao — ye problem tha */
 .options li {
-    position: static;  /* pehle relative tha, yahi issue tha */
+    position: static; 
 }
 
-/* Mega menu — full width, header ke neeche */
+
 .mega-menu {
     display: none;
     position: absolute;
-    top: 100%;        /* header ke bilkul neeche */
-    left: 0;          /* page ke left edge se */
-    right: 0;         /* page ke right edge tak */
+    top: 100%;       
+    left: 0;         
+    right: 0;         
     background-color: #fff;
     padding: 32px 60px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.10);
@@ -117,7 +116,6 @@ li.menu-item {
     display: flex;
 }
 
-/* Column heading — bold black jaise mi.com */
 .mega-col h4 {
     font-size: 1rem;
     font-weight: 700;
@@ -126,7 +124,6 @@ li.menu-item {
     border-bottom: none;
 }
 
-/* Links — grey, hover pe orange */
 .mega-col a {
     text-decoration: none;
     color: #777;
@@ -140,12 +137,13 @@ li.menu-item {
     color: orange;
 }
 
-/* Active nav item */
 .has-dropdown:hover > a {
     color: orange;
     border-bottom: 2px solid orange;
     padding-bottom: 4px;
 }
+
+
 /* Hero sections */
 
 #hero{
