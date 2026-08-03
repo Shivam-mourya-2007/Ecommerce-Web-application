@@ -87,7 +87,68 @@ li.menu-item {
     cursor: pointer;
 }
 
+/* Navbar relative chahiye dropdown ke liye */
+#header {
+    position: relative;
+}
 
+.options li {
+    position: relative;
+}
+
+/* Active nav item orange underline — Xiaomi style */
+.has-dropdown:hover > a {
+    color: orange;
+    border-bottom: 2px solid orange;
+    padding-bottom: 4px;
+}
+
+/* Mega menu box */
+.mega-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    padding: 24px 32px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    z-index: 999;
+    min-width: 400px;
+    gap: 40px;
+    flex-direction: row;
+    border-top: 2px solid orange;
+}
+
+/* Hover pe show */
+.has-dropdown:hover .mega-menu {
+    display: flex;
+}
+
+/* Column inside mega menu */
+.mega-col {
+    display: flex;
+    flex-direction: column;
+    min-width: 160px;
+}
+
+.mega-col h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 12px;
+}
+
+.mega-col a {
+    text-decoration: none;
+    color: #888;
+    font-size: 0.88rem;
+    margin-bottom: 10px;
+    transition: color 0.2s;
+}
+
+.mega-col a:hover {
+    color: orange;
+}
 /* Hero sections */
 
 #hero{
