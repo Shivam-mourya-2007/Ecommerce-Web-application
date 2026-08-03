@@ -118,6 +118,30 @@ a{
      
     });
 
+    let viewButtons = document.querySelectorAll(".view-more");
+
+viewButtons.forEach((button) => {
+
+    button.addEventListener("click", function () {
+
+        let card = this.closest(".cloth-card");
+
+        let product = {
+            image: card.querySelector("img").src,
+            brand: card.querySelector("span").innerText,
+            name: card.querySelector("h5").innerText,
+            description: card.querySelector("h5").innerText,
+            price: card.querySelector("h4").innerText
+        };
+
+        localStorage.setItem("selectedProduct", JSON.stringify(product));
+
+        window.location.href = "viewMore.html";
+
+    });
+
+});
+
     card.append(Image, ProductName, description, price, AddCart);
     document.getElementById("container").appendChild(card);
   }
